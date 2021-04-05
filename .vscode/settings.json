@@ -1,8 +1,24 @@
 {
     "workbench.colorCustomizations": {
-        "activityBar.background": "#273104",
-        "titleBar.activeBackground": "#374506",
-        "titleBar.activeForeground": "#F7FDE1"
+        "activityBar.background": "#1a3500",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#005ebf",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "titleBar.activeBackground": "#010200",
+        "titleBar.inactiveBackground": "#01020099",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "statusBar.background": "#010200",
+        "statusBarItem.hoverBackground": "#1a3500",
+        "statusBar.foreground": "#e7e7e7",
+        "activityBar.activeBackground": "#1a3500",
+        "activityBar.activeBorder": "#005ebf"
     },
-    "eslint.enable": true
+    "eslint.enable": true,
+    "peacock.color": "#010200",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }

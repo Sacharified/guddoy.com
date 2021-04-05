@@ -1,6 +1,6 @@
 import React from "react";
 import { Provider, inject } from "mobx-react"
-import App, { Container } from "next/app";
+import App from "next/app";
 import Head from "next/head";
 import Link from "next/link";
 import { fetchContent, serviceFactory, createStoreFromJson } from "api/services/content";
@@ -12,6 +12,7 @@ import IconButton from "components/iconbutton";
 import Typography from "@material-ui/core/Typography";
 import GithubIcon from "static/img/github-circle.svg";
 import HomeIcon from "material-design-icons/action/svg/production/ic_home_24px.svg";
+import "isomorphic-unfetch";
 
 @inject("store")
 class Layout extends React.Component {
@@ -21,6 +22,10 @@ class Layout extends React.Component {
 			<>
 				<Head>
 					<title>Sacha Guddoy</title>
+					<meta
+                        name="viewport"
+                        content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+                    />
 				</Head>
 				<AppBar position="fixed" color="default">
 					<Toolbar>
@@ -64,7 +69,7 @@ class MyApp extends App {
 	render() {
 		const { Component, router, pageProps } = this.props;
 		return (
-			<Container>
+			<>
 				<Head>
 					<title>Sacha Guddoy</title>
 				</Head>
@@ -74,7 +79,7 @@ class MyApp extends App {
 						<Component query={router.query} {...pageProps} />
 					</Layout>
 				</Provider>
-			</Container>
+			</>
 		);
 	}
 }

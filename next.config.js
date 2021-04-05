@@ -2,7 +2,7 @@
 require = require("esm")(module);
 require("dotenv").config()
 const withImages = require("next-images");
-const merge = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const path = require("path");
 const getContent = require("./scripts/get-content");
 // const getImages = require("./scripts/get-images");
@@ -12,6 +12,9 @@ const {
 	CONTENTFUL_SPACE_ID,
 	OXFORD_DICTIONARY_APP_ID,
 	OXFORD_DICTIONARY_APP_KEY,
+	HASURA_SECRET,
+	HASURA_URL,
+	BOOKMARK_COOKIE_SECRET,
 	NODE_ENV
 } = process.env;
 module.exports = withImages({
@@ -25,12 +28,19 @@ module.exports = withImages({
 			}
 		}, config);
 	},
+	distDir: "../.next",
+	target: "serverless",
+	serverRuntimeConfig: {
+		BOOKMARK_COOKIE_SECRET
+	},
 	publicRuntimeConfig: {
 		mode: NODE_ENV,
 		CONTENTFUL_ACCESS_TOKEN,
 		CONTENTFUL_SPACE_ID,
 		OXFORD_DICTIONARY_APP_ID,
 		OXFORD_DICTIONARY_APP_KEY,
+		HASURA_SECRET,
+		HASURA_URL
 	},
 	exportPathMap: async function () {
 		const paths = {
@@ -45,5 +55,18 @@ module.exports = withImages({
 		});
 
 		return paths;
-	}
+	},
+	headers: async () => {
+		return [
+		{
+			source: "/api/bookmarks",
+			headers: [
+				{
+					key: "access-control-allow-origin",
+					value: "*",
+				}
+			],
+		},
+		]
+	},
 });

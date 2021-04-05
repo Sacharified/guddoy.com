@@ -1,6 +1,5 @@
 [build]
-  command = "npm run export"
-  publish = "out"
+  command = "npm run build"
   functions = "functions"
 
 # Production context: All deploys to the main

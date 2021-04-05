@@ -12,9 +12,9 @@
     "dev": "next ./src",
     "netlify-dev": "netlify dev",
     "build": "next build ./src",
-    "start": "npm run export && http-server ./out -p 3000 ",
+    "start": "npm run build && next",
     "export": "npm run build && next export ./src --outdir='./out'",
-    "deploy": "netlify deploy",
+    "deploy": "rm -rf .next && npm run build && netlify deploy",
     "lint": "eslint ./src ./cypress --fix",
     "postinstall": "npm-recursive-install --rootDir=./functions"
   },
@@ -29,20 +29,21 @@
     "contentful": "^7.8.2",
     "dateformat": "^3.0.3",
     "dotenv": "^8.0.0",
+    "graphql": "^15.5.0",
+    "isomorphic-unfetch": "^3.1.0",
     "lodash": "^4.17.13",
     "material-design-icons": "^3.0.1",
     "mobx": "^5.13.0",
     "mobx-react": "^6.1.4",
     "mobx-state-tree": "^3.14.1",
-    "next": "^9.0.3",
+    "next": "^10.0.9",
     "next-images": "^1.1.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "next-urql": "^3.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-is": "^17.0.1",
     "react-syntax-highlighter": "^11.0.2",
-    "sharp": "^0.23.0",
-    "sqip-plugin-data-uri": "^1.0.0-alpha.27",
-    "sqip-plugin-primitive": "^1.0.0-alpha.27",
-    "sqip-plugin-svgo": "^1.0.0-alpha.27"
+    "urql": "^2.0.1"
   },
   "bit": {
     "env": {
@@ -72,7 +73,6 @@
     "memfs": "^2.15.5",
     "netlify": "^2.4.8",
     "recursive-install": "^1.4.0",
-    "sqip": "^1.0.0-alpha.26",
-    "sqip-plugin-blur": "^1.0.0-alpha.22"
+    "webpack-merge": "^5.7.3"
   }
 }
